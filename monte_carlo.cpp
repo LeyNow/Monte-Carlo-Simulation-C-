@@ -5,6 +5,7 @@
 #include <vector>
 #include <mutex>
 #include <cmath>
+#include <chrono>
 
 // les threads local permettent d'avoir une variable unique à chaque thread
 thread_local double valeur_finale_thread = 0.0;
@@ -142,7 +143,7 @@ class Monte_Carlo {
         std::cin >> valeur_initial;
         std::cout << "\nDonner le strike de l'option : ";
         std::cin >> strike;
-        std::cout << "\nDonner le taux d'interet dans risque de l'option : ";
+        std::cout << "\nDonner le taux d'interet sans risque de l'option : ";
         std::cin >> taux_r;
         std::cout << "\nDonner la maturite T de l'option : ";
         std::cin >> maturite_t;
@@ -167,6 +168,7 @@ class Monte_Carlo {
 int main() {
     Monte_Carlo m_c;
     m_c.afficher_interface_debut();
+    auto start = std::chrono::high_resolution_clock::now(); // début du chrono
     std::thread t1(&Monte_Carlo::work_thread_simulation, &m_c);
     std::thread t2(&Monte_Carlo::work_thread_simulation, &m_c);
     std::thread t3(&Monte_Carlo::work_thread_simulation, &m_c);
@@ -177,8 +179,11 @@ int main() {
     t3.join();
     t4.join();
     t5.join();
+    auto finish = std::chrono::high_resolution_clock::now(); // fin du chrono
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
     m_c.resultat_finale();
     m_c.afficher_interface_fin();
+    std::cout << "Temps d'execution : " << duration.count() << " (ms)";
 
     return 0;
 }
