@@ -22,5 +22,5 @@ Et ensuite pour **executer** :
 
 
 
-L'implémentation du multi-threading est des principales caractéristiques de ce programme. cela permet de meilleure performance. Un système de calcul de temps d'execution permet de mesurer justement les performances. 
+L'implémentation du multi-threading est une des principales caractéristiques de ce programme. cela permet de meilleure performance. Un système de calcul de temps d'execution permet de mesurer justement les performances. 
 
