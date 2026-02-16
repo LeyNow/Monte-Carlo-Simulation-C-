@@ -23,4 +23,4 @@ Et ensuite pour **executer** :
 
 
 L'implémentation du multi-threading est une des principales caractéristiques de ce programme. Cela permet de meilleure performance. Un système de calcul de temps d'execution permet de mesurer justement ces performances. 
-
+La première feature de ce programme est le fait d'utiliser le modèle de Monte-Carlo (utilisation de source aléatoire). Ce programme ne marche que pour des options européennes (le calcul se fait seulement à maturité T). 
